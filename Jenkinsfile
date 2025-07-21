@@ -1,6 +1,6 @@
 pipeline{
      agent{
-       lable 'agent name'
+       lable 'agent-1'
      }
      tools
        {
