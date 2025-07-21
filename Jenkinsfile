@@ -1,6 +1,6 @@
 pipeline{
-     agent{
-       lable 'agent-1'
+     agent {
+       label 'agent-1'
      }
      tools
        {
