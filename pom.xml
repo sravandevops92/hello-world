@@ -40,13 +40,13 @@
 	    <repository>
 	      <id>nexus</id>
 	      <name>sample-release </name>
-	      <url>http://16.16.173.181:8081/repository/flipkart-release/</url>
+	      <url>http://16.16.173.181:8081/repository/sample-release/</url>
 	    </repository>
 	    
 	    <snapshotRepository>
 	      <id>nexus</id>
 	      <name>sample-snapshots </name>
-	      <url>http://16.16.173.181:8081/repository/flipkart-snapshot/</url>
+	      <url>http://16.16.173.181:8081/repository/sample-snapshots/</url>
 	    </snapshotRepository>
 	    
 	</distributionManagement>    
