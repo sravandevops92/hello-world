@@ -22,5 +22,13 @@ pipeline{
             }
           }
         }
-     }
+         stage ('nexus artifact'){
+          steps {
+            script {
+            sh "mvn deploy"
+            }
+          }    
+         }
+     }   
+} 
    }
