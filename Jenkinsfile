@@ -14,15 +14,10 @@ pipeline {
           }
      }
      stage ('sonar') {
-       agent {
-          docker {
-           image 'joebaird/sonarscanner'
-           args '-v /var/run/docker.sock:/var/run/docker.sock'
-        }
-     }
      steps {
           script {
-               sh "sonar-scanner --version"
+            def SONAR_SCANNER_HOME = tool 'Sonar-Scanner' 
+            sh "${SONAR_SCANNER_HOME}/bin/sonar-scanner --version"
           }
       }
      }
