@@ -16,7 +16,8 @@ pipeline {
      stage ('sonar') {
        agent {
           docker {
-            image 'joebaird/sonarscanner' // Docker image to use
+           image 'joebaird/sonarscanner'
+           args '-v /var/run/docker.sock:/var/run/docker.sock'
         }
      }
      steps {
