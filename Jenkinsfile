@@ -1,34 +1,16 @@
-pipeline{
-     agent any
-     tools
-       {
-         maven 'maven'
-       }
-     stages {
-       stage ('test') {
-         steps {
-                script {
-                  sh "mvn test"
-                }
-              }
-           }
-        stage ('sonar analysis'){
-          steps {
-            script {
-              withSonarQubeEnv('sonar') {
-                  def SONAR_SCAN_HOME = tool 'sonar-scanner'
-                  sh "${SONAR_SCAN_HOME}/bin/sonar-scanner -Dsonar.projectKey=hello-world"
-              }
-            }
-          }
+pipeline {
+     agent {
+          docker {
+            image 'maven:3.8.4-jdk-11' // Docker image to use
+            args '-v /root/.m2:/root/.m2' // Optional: additional Docker args
         }
-         stage ('nexus artifact'){
+     }
+     stages ('test') {
           steps {
-            script {
-            sh "mvn deploy"
-            }
-          }    
-         }
-     }   
-} 
+               script {
+                    sh "mvn test"
+               }
+          }
+      }
    }
+}
