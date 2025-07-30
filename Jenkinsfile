@@ -17,6 +17,7 @@ pipeline {
        steps {
             script {
                  sh "mvn package"
+                 archiveArtifacts artifacts: 'target/*.war', fingerprint: true
             }
        }
      }
