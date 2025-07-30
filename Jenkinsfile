@@ -14,10 +14,14 @@ pipeline {
           }
      }
      stage ('sonar') {
+      agent {
+           docker {
+              image  'sonarsource/sonar-scanner-cli'
+           }
+      }
      steps {
           script {
-            def SONAR_SCANNER_HOME = tool 'Sonar-Scanner' 
-            sh "${SONAR_SCANNER_HOME}/bin/sonar-scanner --version"
+           sh "sonar-scanner-cli --version"
           }
       }
      }
