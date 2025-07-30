@@ -13,6 +13,18 @@ pipeline {
                }
           }
      }
+     stage ('sonar') {
+       agent {
+          docker {
+            image 'joebaird/sonarscanner' // Docker image to use
+        }
+     }
+     steps {
+          script {
+               sh "sonar-scanner --version"
+          }
+      }
+     }
      stage ('build') {
        steps {
             script {
