@@ -5,7 +5,8 @@ pipeline {
             args '-v /root/.m2:/root/.m2' // Optional: additional Docker args
         }
      }
-     stages ('test') {
+     stages {
+       stage ('test') {
           steps {
                script {
                     sh "mvn test"
