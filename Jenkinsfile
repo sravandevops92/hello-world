@@ -9,10 +9,6 @@ pipeline {
         maven 'maven'
     }
 
-    environment {
-        IMAGE_NAME = "my-hello-world-war"
-    }
-
     stages {
         stage('Test') {
             steps {
