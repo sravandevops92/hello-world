@@ -1,10 +1,7 @@
 pipeline {
      agent {
-          docker {
-            image 'maven:3.8.4-jdk-11' // Docker image to use
-            args '-v /root/.m2:/root/.m2' // Optional: additional Docker args
+          label 'jenkins-agent'
         }
-     }
      stages {
        stage ('test') {
           steps {
@@ -13,25 +10,4 @@ pipeline {
                }
           }
      }
-     stage ('sonar') {
-      agent {
-           docker {
-              image  'sonarsource/sonar-scanner-cli'
-           }
-      }
-     steps {
-          script {
-           sh "sonar-scanner-cli --version"
-          }
-      }
-     }
-     stage ('build') {
-       steps {
-            script {
-                 sh "mvn package"
-                 archiveArtifacts artifacts: 'target/*.war', fingerprint: true
-            }
-       }
-     }
-   }
-}
+}  
