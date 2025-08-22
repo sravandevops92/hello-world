@@ -2,7 +2,7 @@ pipeline {
      agent {
           label 'jenkins-agent'
         }
-     tool {
+     tools {
           maven 'maven'
      }
      stages {
