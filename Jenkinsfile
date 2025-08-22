@@ -34,5 +34,13 @@ pipeline {
                 }
             }
         }
+        stage('pupbilshing artifacts into the nexus') {
+            steps {
+                script {
+                     withCredentials([file(credentialsId: 'setting-xml-file', variable: 'MAVEN_SETTINGS')]) {
+                    sh "mvn clean deploy --settings $MAVEN_SETTINGS"
+                }
+            }
+        }
     }
 }
