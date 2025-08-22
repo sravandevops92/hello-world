@@ -1,9 +1,10 @@
 pipeline {
     agent {
         label 'jenkins-agent'
+    }  options {
+        buildDiscarder(logRotator(numToKeepStr: '5'))  // keep last 5 builds only
     }
-
-    tools {
+   tools {
         maven 'maven'   // Maven tool configured in Jenkins Global Tool Configuration
     }
 
