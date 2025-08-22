@@ -42,18 +42,5 @@ pipeline {
                 }
             }
         }
-
-        stage('Build Docker Image') {
-            steps {
-                script {
-                    def timestamp = new Date().format("yyyyMMdd-HHmmss", TimeZone.getTimeZone('UTC'))
-                    def imageTag = "${BUILD_NUMBER}-${timestamp}"
-
-                    sh """
-                        docker build -t ${IMAGE_NAME}:${imageTag} .
-                    """
-                }
-            }
-        }
     }
 }
