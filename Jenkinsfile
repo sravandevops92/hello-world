@@ -17,7 +17,7 @@ pipeline {
         steps {
           scrpit{
                def SONAR_SCANNER_HOME = tool 'sonar-scanner'
-               sh "$(SONAR_SCANNER_HOME}/bin/sonar-scanner --version"
+               sh "${SONAR_SCANNER_HOME}/bin/sonar-scanner --version"
      agent {
           label 'jenkins-agent'
         }
