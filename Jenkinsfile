@@ -2,9 +2,11 @@ pipeline {
     agent {
         label 'jenkins-agent'
     }
+
     tools {
-        maven 'maven'
+        maven 'maven'   // Maven tool configured in Jenkins Global Tool Configuration
     }
+
     stages {
         stage('Test') {
             steps {
@@ -17,11 +19,12 @@ pipeline {
         stage('SonarQube Analysis') {
             steps {
                 script {
-                    def SONAR_SCANNER_HOME = tool 'sonar-scanner'  // sonar-scanner must be configured in Global Tool Configuration
-                        sh "${SONAR_SCANNER_HOME}/bin/sonar-scanner --version"
+                    withSonarQubeEnv('sonar') {  // 'sonar' must match your SonarQube server name in Jenkins
+                        sh "mvn sonar:sonar"
                     }
                 }
             }
+        }
 
         stage('Build') {
             steps {
