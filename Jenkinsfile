@@ -16,7 +16,7 @@ pipeline {
        stage ('build') {
           steps {
               script{
-                   sh "mven package"
+                   sh "mvn package"
               }
           }
        }
