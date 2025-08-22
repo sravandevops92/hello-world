@@ -18,12 +18,10 @@ pipeline {
             steps {
                 script {
                     def SONAR_SCANNER_HOME = tool 'sonar-scanner'  // sonar-scanner must be configured in Global Tool Configuration
-                    withSonarQubeEnv('SonarQubeServer') {           // SonarQubeServer must be configured in Jenkins -> Configure System
                         sh "${SONAR_SCANNER_HOME}/bin/sonar-scanner --version"
                     }
                 }
             }
-        }
 
         stage('Build') {
             steps {
