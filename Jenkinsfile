@@ -2,7 +2,7 @@ pipeline {
     agent { label 'jenkins-agent' }
 
     options {
-        buildDiscarder(logRotator(numToKeepStr: '5'))  // keep only last 5 builds
+        buildDiscarder(logRotator(numToKeepStr: '5'))
     }
 
     tools {
@@ -10,8 +10,7 @@ pipeline {
     }
 
     environment {
-        IMAGE_NAME = "my-hello-world-war"   // change to your app name
-        IMAGE_TAG  = "v${BUILD_NUMBER}"     // unique tag for each build
+        IMAGE_NAME = "my-hello-world-war"
     }
 
     stages {
@@ -51,8 +50,11 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
+                    def timestamp = new Date().format("yyyyMMdd-HHmmss", TimeZone.getTimeZone('UTC'))
+                    def imageTag = "${BUILD_NUMBER}-${timestamp}"
+
                     sh """
-                        docker build -t ${IMAGE_NAME}:${IMAGE_TAG} .
+                        docker build -t ${IMAGE_NAME}:${imageTag} .
                     """
                 }
             }
