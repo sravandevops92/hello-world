@@ -43,8 +43,8 @@ pipeline {
                         cat k8s/2-deployment.yml
                     """
                      withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: "${params.CREDENTIALS_ID}", acccessKeyVariable:  'AWS_ACCESS_KEY_ID', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
-                        println("credentials id is: ${params.CREDENTIALS_ID}"
-                        println("environemnt name is: ${params.environment_name}"
+                        println("credentials id is: ${params.CREDENTIALS_ID}")
+                        println("environemnt name is: ${params.environment_name}")
                        //sh "aws eks update-kubeconfig --name staging-demo --region us-east-2" 
                        //sh "kubectl apply -f k8s"
                      }
