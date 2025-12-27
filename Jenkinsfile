@@ -8,7 +8,7 @@ pipeline {
             description: 'Please enter environment name'
         )
         string(
-            name: 'IMAGE_TAG'
+            name: 'IMAGE_TAG',
             defaultValue: '',
             description: 'Please enter image tag'
         )
