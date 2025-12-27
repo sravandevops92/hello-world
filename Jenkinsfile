@@ -33,7 +33,7 @@ pipeline {
                     // Generate image tag
                     //def TAG = sh(script: "date +%Y%m%d-%H%M%S", returnStdout: true).trim()
 
-                    def IMAGE_NAME = "dharimigariarjun/maven-project:${params.IMAGE_TA}"
+                    def IMAGE_NAME = "dharimigariarjun/maven-project:${params.IMAGE_TAG}"
 
                     println("IMAGE NAME: ${IMAGE_NAME}")
 
