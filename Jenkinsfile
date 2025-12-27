@@ -12,7 +12,7 @@ pipeline {
             defaultValue: '',
             description: 'Please enter image tag'
         )
-        choice(
+       /* choice(
             name: 'CREDENTIALS_ID',
             choices: [
                 'dev-credentials-id',
@@ -21,9 +21,15 @@ pipeline {
                 'prod-credentials-id'
             ],
             description: 'Please select the credentials id'
-        )
+        ) */
+    credentials(
+        name: 'CREDENTIALS_ID',
+        description: 'Select credentials from Jenkins',
+        defaultValue: '',
+        credentialType: 'com.cloudbees.plugins.credentials.impl.UsernamePasswordCredentialsImpl',
+        required: true
+         )
     }
-
     stages {
         stage('Deploy') {
             steps {
