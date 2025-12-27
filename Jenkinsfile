@@ -26,7 +26,7 @@ pipeline {
         name: 'CREDENTIALS_ID',
         description: 'Select credentials from Jenkins',
         defaultValue: '',
-        credentialType: 'com.cloudbees.plugins.credentials.impl.UsernamePasswordCredentialsImpl',
+        credentialType: 'com.cloudbees.jenkins.plugins.awscredentials.AWSCredentialsImpl',
         required: true
          )
     }
